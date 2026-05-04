@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; base-uri 'self'; form-action 'self';">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="Portfolio de Noah FINE – Administrateur Réseau & Système, BTS SIO SISR">
     <meta name="keywords" content="BTS SIO, réseau, système, Azure, GLPI, Linux, portfolio">
     <title>Noah FINE — Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5YZEP06NZ5"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-5YZEP06NZ5');
     </script>
 </head>
 <body>
@@ -221,12 +224,12 @@
             Retrouvez mes projets et mon parcours professionnel sur ces plateformes.
         </p>
         <div class="social-grid">
-            <a href="https://linkedin.com/in/noah-fine-12663a2b7" target="_blank" class="social-card">
+            <a href="https://linkedin.com/in/noah-fine-12663a2b7" target="_blank" rel="noopener noreferrer" class="social-card">
                 <i class="fa-brands fa-linkedin-in"></i>
                 <span>LinkedIn</span>
                 <small>Parcours professionnel</small>
             </a>
-            <a href="https://github.com/wolfnono" target="_blank" class="social-card">
+            <a href="https://github.com/wolfnono" target="_blank" rel="noopener noreferrer" class="social-card">
                 <i class="fa-brands fa-github"></i>
                 <span>GitHub</span>
                 <small>Scripts & configs</small>

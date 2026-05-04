@@ -485,16 +485,13 @@ ul { list-style: none; }
     margin: 0 auto;
 }
 
-.content-main {}
-
 .content-sidebar {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
 
-/* Timeline steps */
-.steps {}
+
 
 .step {
     display: flex;
@@ -528,8 +525,6 @@ ul { list-style: none; }
     font-weight: 700;
     color: var(--cyan);
 }
-
-.step-body {}
 
 .step-body h3 {
     font-size: 1.1rem;
