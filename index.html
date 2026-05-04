@@ -3,164 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noah FINE - Admin Réseau & Système</title>
+    <meta name="description" content="Portfolio de Noah FINE – Administrateur Réseau & Système, BTS SIO SISR">
+    <meta name="keywords" content="BTS SIO, réseau, système, Azure, GLPI, Linux, portfolio">
+    <title>Noah FINE — Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="logo">Noah<span>Fine</span></div>
-        <ul class="nav-links">
-            <li><a href="#home">Accueil</a></li>
-            <li><a href="#about">À propos</a></li>
-            <li><a href="#skills">Compétences</a></li>
-            <li><a href="#projects">Projets</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="burger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
-    </nav>
+<nav class="navbar">
+    <div class="logo">Noah<span>Fine</span></div>
+    <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="index.html#about">À propos</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-competences">
+        <a href="c1.html">C1</a>
+        <a href="c7.html">C7</a>
+        <a href="c11.html">C11</a>
+        <a href="c14.html">C14</a>
+        <a href="c17.html">C17</a>
+    </div>
+    <div class="burger">
+        <span></span><span></span><span></span>
+    </div>
+</nav>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h3>Bonjour, je suis</h3>
-            <h1>Noah FINE</h1>
-            <h3 class="typing-text">Je suis <span class="typewriter"></span></h3>
-            <p>Passionné par les infrastructures informatiques. Je conçois, administre et sécurise les réseaux et systèmes qui connectent les entreprises.</p>
-            <a href="#contact" class="btn">Me contacter</a> 
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+        <div class="hero-tag">BTS SIO — Option SISR</div>
+        <h1>Noah <span class="highlight">FINE</span><br>Portfolio</h1>
+        <p class="hero-sub">Je suis <span class="typewriter" style="color:var(--cyan)"></span><br>
+        Passionné par les infrastructures informatiques — je conçois, administre et sécurise les réseaux et systèmes.</p>
+        <div class="hero-actions">
+            <a href="#competences" class="btn-primary">
+                <i class="fa-solid fa-folder-open"></i> Voir mes compétences
+            </a>
+            <a href="#contact" class="btn-secondary">
+                <i class="fa-solid fa-paper-plane"></i> Me contacter
+            </a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="about" class="section">
-        <div class="container">
+<!-- ABOUT -->
+<section id="about" class="section" style="background: var(--bg2); border-top: 1px solid var(--border);">
+    <div style="max-width: 900px; margin: 0 auto;">
+        <div class="section-header">
+            <p class="section-label">// profil</p>
             <h2 class="section-title">À propos de <span>moi</span></h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Étudiant en BTS SIO passionné par l'administration systèmes et réseaux. Mon profil technique me permet de comprendre les enjeux de connectivité et de sécurité d'une infrastructure moderne.</p>
-                    <p>De la configuration de serveurs <strong>Linux</strong> au déploiement d'architectures cloud sur <strong>Azure</strong>, en passant par la gestion de bases de données, je m'efforce d'assurer la disponibilité et la performance des services.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+            <div>
+                <p style="color: var(--muted); line-height: 1.8; margin-bottom: 1rem;">
+                    Étudiant en <strong style="color: var(--text);">BTS SIO option SISR</strong>, j'ai réalisé mon stage à l'<strong style="color: var(--text);">Efrei</strong> où j'ai déployé une infrastructure GLPI complète sur Azure et mis en place des outils d'inventaire, de ticketing et de sauvegarde automatisée.
+                </p>
+                <p style="color: var(--muted); line-height: 1.8;">
+                    De la configuration de serveurs <strong style="color: var(--text);">Linux</strong> au déploiement d'architectures cloud sur <strong style="color: var(--text);">Azure</strong>, en passant par la gestion de bases de données et le scripting bash, je m'efforce d'assurer la disponibilité et la performance des services.
+                </p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                <div class="skill-item">
+                    <div class="skill-item-icon"><i class="fa-solid fa-network-wired"></i></div>
+                    <h4>Réseaux & Système</h4>
+                    <p>Linux Debian/Ubuntu · TCP/IP · DNS · DHCP · Administration Windows</p>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-item-icon"><i class="fa-solid fa-cloud"></i></div>
+                    <h4>Cloud & Virtualisation</h4>
+                    <p>Microsoft Azure · VM · VNet · NSG · GLPI · Hyperviseurs</p>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-item-icon"><i class="fa-brands fa-python"></i></div>
+                    <h4>Scripting & Automatisation</h4>
+                    <p>Bash · Python · Apache · MySQL · PHP · HTML/CSS/JS</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="skills" class="section bg-dark">
-        <div class="container">
+<!-- COMPETENCES -->
+<section id="competences" class="section">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <div class="section-header">
+            <p class="section-label">// réalisations de stage</p>
             <h2 class="section-title">Mes <span>Compétences</span></h2>
-            <div class="skills-grid">
-                
-                <div class="skill-card">
-                    <i class="fa-solid fa-network-wired"></i>
-                    <h3>Réseaux & Système</h3>
-                    <p>Linux (Debian/Ubuntu)</p>
-                    <p>Protocoles (TCP/IP, DNS, DHCP)</p>
-                    <p>Administration Windows/Linux</p>
-                </div>
+        </div>
+        <div class="competences-grid">
 
-                <div class="skill-card">
-                    <i class="fa-solid fa-cloud"></i>
-                    <h3>Cloud & Virtualisation</h3>
-                    <p>Microsoft Azure (VM, VNet)</p>
-                    <p>Création de VM & Hyperviseurs</p>
-                    <p>Déploiement de solutions (GLPI)</p>
+            <a href="c1.html" class="comp-card">
+                <p class="comp-card-code">C1 — Ressources numériques</p>
+                <h3>Recenser et identifier les ressources numériques</h3>
+                <p>Déploiement de GLPI sur Azure pour centraliser l'inventaire du parc informatique. Installation d'agents sur les postes clients et hébergement sur VM Debian.</p>
+                <div class="comp-tags">
+                    <span class="tag">GLPI</span>
+                    <span class="tag">Azure</span>
+                    <span class="tag">GitHub Pages</span>
+                    <span class="tag">Inventaire</span>
                 </div>
+                <span class="comp-card-arrow">↗</span>
+            </a>
 
-                <div class="skill-card">
-                    <i class="fa-solid fa-server"></i>
-                    <h3>Administration BDD</h3>
-                    <p>MySQL / MariaDB</p>
-                    <p>Gestion utilisateurs & Sauvegardes</p>
-                    <p>Requêtes SQL</p>
+            <a href="c7.html" class="comp-card">
+                <p class="comp-card-code">C7 — Suivi des demandes</p>
+                <h3>Collecter, suivre et orienter les demandes</h3>
+                <p>Configuration du module tickets GLPI avec création de comptes utilisateurs, définition des rôles et mise en place de règles d'attribution automatique.</p>
+                <div class="comp-tags">
+                    <span class="tag">GLPI Tickets</span>
+                    <span class="tag">Utilisateurs</span>
+                    <span class="tag">ITSM</span>
+                    <span class="tag">Helpdesk</span>
                 </div>
+                <span class="comp-card-arrow">↗</span>
+            </a>
 
-                <div class="skill-card">
-                    <i class="fa-brands fa-python"></i>
-                    <h3>Scripting & Web</h3>
-                    <p>Python (Automatisation)</p>
-                    <p>Web (HTML/CSS/JS/PHP)</p>
-                    <p>Configuration Apache</p>
+            <a href="c11.html" class="comp-card">
+                <p class="comp-card-code">C11 — Visibilité en ligne</p>
+                <h3>Référencer les services et mesurer leur visibilité</h3>
+                <p>Intégration de balises méta SEO et de Google Tag (gtag.js) pour suivre l'audience d'un service déployé sur GitHub Pages.</p>
+                <div class="comp-tags">
+                    <span class="tag">SEO</span>
+                    <span class="tag">Google Analytics</span>
+                    <span class="tag">HTML sémantique</span>
+                    <span class="tag">GitHub Pages</span>
                 </div>
+                <span class="comp-card-arrow">↗</span>
+            </a>
 
+            <a href="c14.html" class="comp-card">
+                <p class="comp-card-code">C14 — Planification</p>
+                <h3>Planifier les activités</h3>
+                <p>Organisation du déploiement GLPI en 4 phases avec suivi Kanban sur Trello. Priorisation des tâches critiques et gestion des délais du stage.</p>
+                <div class="comp-tags">
+                    <span class="tag">Trello</span>
+                    <span class="tag">Kanban</span>
+                    <span class="tag">Gestion de projet</span>
+                    <span class="tag">Planning</span>
+                </div>
+                <span class="comp-card-arrow">↗</span>
+            </a>
+
+            <a href="c17.html" class="comp-card" style="grid-column: span 1;">
+                <p class="comp-card-code">C17 — Déploiement de service</p>
+                <h3>Déployer un service en production</h3>
+                <p>Déploiement complet de GLPI sur Azure : stack LAMP automatisée (Apache, PHP 8.3, MariaDB), agent d'inventaire, sauvegarde automatique vers Google Drive via rclone.</p>
+                <div class="comp-tags">
+                    <span class="tag">Azure VM</span>
+                    <span class="tag">Apache</span>
+                    <span class="tag">MariaDB</span>
+                    <span class="tag">Bash</span>
+                    <span class="tag">rclone</span>
+                </div>
+                <span class="comp-card-arrow">↗</span>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" style="background: var(--bg2); border-top: 1px solid var(--border);">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <div class="section-header">
+            <p class="section-label">// réalisations techniques</p>
+            <h2 class="section-title">Projets <span>notables</span></h2>
+        </div>
+        <div class="competences-grid">
+            <div class="comp-card" style="cursor: default;">
+                <p class="comp-card-code">Infrastructure Cloud</p>
+                <h3>Architecture Azure — VNet, NSG, VM</h3>
+                <p>Déploiement d'une infrastructure virtuelle sécurisée avec réseaux virtuels, règles de sécurité et machines virtuelles.</p>
+                <div class="comp-tags">
+                    <span class="tag">Azure</span><span class="tag">VNet</span><span class="tag">NSG</span>
+                </div>
+            </div>
+            <div class="comp-card" style="cursor: default;">
+                <p class="comp-card-code">Stack LAMP</p>
+                <h3>Déploiement Web — Linux, Apache, MySQL, PHP</h3>
+                <p>Mise en production d'un service web dynamique avec gestion des permissions, connexion BDD et hébergement applicatif.</p>
+                <div class="comp-tags">
+                    <span class="tag">Linux</span><span class="tag">Apache</span><span class="tag">MySQL</span><span class="tag">PHP</span>
+                </div>
+            </div>
+            <div class="comp-card" style="cursor: default;">
+                <p class="comp-card-code">Sauvegarde automatisée</p>
+                <h3>Backup GLPI → Google Drive via rclone</h3>
+                <p>Script cron automatique créant des dumps SQL et archives .tar.gz, transférés vers Google Drive avec purge des fichiers +7 jours.</p>
+                <div class="comp-tags">
+                    <span class="tag">Bash</span><span class="tag">rclone</span><span class="tag">cron</span><span class="tag">MariaDB</span>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="projects" class="section">
-        <div class="container">
-            <h2 class="section-title">Mes <span>Projets</span></h2>
-            <div class="projects-grid">
-                
-                <div class="project-card">
-                    <div class="project-info">
-                        <h3>Architecture Cloud Azure</h3>
-                        <p class="tech-stack">Azure - VNet - NSG - VM</p>
-                        <p>Déploiement d'une infrastructure virtuelle sécurisée : configuration des réseaux virtuels (VNet), règles de sécurité (NSG) et machines virtuelles.</p>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-info">
-                        <h3>Serveur de Gestion (GLPI)</h3>
-                        <p class="tech-stack">Linux - Apache - GLPI</p>
-                        <p>Installation complète d'une solution de ticketing et d'inventaire. Configuration du serveur web Apache et optimisation de la base de données.</p>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-info">
-                        <h3>Déploiement Stack LAMP</h3>
-                        <p class="tech-stack">Linux - Apache - MySQL - PHP</p>
-                        <p>Mise en production d'un service web dynamique. Gestion des permissions Linux, connexion BDD et hébergement de l'application.</p>
-                    </div>
-                </div>
-
-            </div>
+<!-- CONTACT -->
+<section id="contact" class="section">
+    <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+        <div class="section-header">
+            <p class="section-label">// contact</p>
+            <h2 class="section-title">Me <span>retrouver</span></h2>
         </div>
-    </section>
-
-    <section id="contact" class="section bg-dark">
-        <div class="container">
-            <h2 class="section-title">Me <span>Retrouver</span></h2>
-            <p style="text-align: center; margin-bottom: 2rem;">Retrouvez mes projets et mon parcours professionnel sur ces plateformes.</p>
-            
-            <div class="social-container">
-                
-                <a href="https://linkedin.com/in/noah-fine-12663a2b7" target="_blank" class="social-card">
-                    <div class="icon-box">
-                        <i class="fa-brands fa-linkedin-in"></i>
-                    </div>
-                    <h3>LinkedIn</h3>
-                    <p>Mon parcours pro</p>
-                </a>
-
-                <a href="https://github.com/wolfnono" target="_blank" class="social-card">
-                    <div class="icon-box">
-                        <i class="fa-brands fa-github"></i>
-                    </div>
-                    <h3>GitHub</h3>
-                    <p>Mes scripts & configs</p>
-                </a>
-
-                <a href="mailto:finenoah833@gmail.com" class="social-card">
-                    <div class="icon-box">
-                        <i class="fa-solid fa-envelope"></i>
-                    </div>
-                    <h3>Email</h3>
-                    <p>Me contacter</p>
-                </a>
-
-            </div>
+        <p style="color: var(--muted); margin-bottom: 2.5rem; line-height: 1.7;">
+            Retrouvez mes projets et mon parcours professionnel sur ces plateformes.
+        </p>
+        <div class="social-grid">
+            <a href="https://linkedin.com/in/noah-fine-12663a2b7" target="_blank" class="social-card">
+                <i class="fa-brands fa-linkedin-in"></i>
+                <span>LinkedIn</span>
+                <small>Parcours professionnel</small>
+            </a>
+            <a href="https://github.com/wolfnono" target="_blank" class="social-card">
+                <i class="fa-brands fa-github"></i>
+                <span>GitHub</span>
+                <small>Scripts & configs</small>
+            </a>
+            <a href="mailto:finenoah833@gmail.com" class="social-card">
+                <i class="fa-solid fa-envelope"></i>
+                <span>Email</span>
+                <small>finenoah833@gmail.com</small>
+            </a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer>
-        <p>&copy; 2024 Noah FINE. Tous droits réservés.</p>
-    </footer>
+<footer>
+    <p>&copy; 2025 Noah FINE — BTS SIO SISR — Tous droits réservés.</p>
+</footer>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

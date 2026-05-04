@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C7 — Collecter et suivre les demandes | Noah FINE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="index.html" class="logo">Noah<span>Fine</span></a>
+    <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="index.html#about">À propos</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-competences">
+        <a href="c1.html">C1</a>
+        <a href="c7.html" class="active">C7</a>
+        <a href="c11.html">C11</a>
+        <a href="c14.html">C14</a>
+        <a href="c17.html">C17</a>
+    </div>
+    <div class="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<header class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-glow"></div>
+    <div class="page-hero-content">
+        <div class="page-badge">
+            <i class="fa-solid fa-ticket"></i> Compétence C7
+        </div>
+        <h1>Collecter, suivre et orienter<br><span>les demandes</span></h1>
+        <p class="page-hero-desc">
+            Mise en place du système de tickets GLPI avec gestion des comptes utilisateurs, rôles et règles d'attribution automatique des incidents.
+        </p>
+    </div>
+</header>
+
+<main class="content-layout">
+
+    <div class="content-main">
+
+        <div class="section-header" style="margin-bottom: 2rem;">
+            <p class="section-label">// contexte</p>
+            <h2 class="section-title" style="font-size: 1.6rem;">Réalisation professionnelle</h2>
+        </div>
+
+        <p style="color: var(--muted); line-height: 1.8; margin-bottom: 2rem;">
+            Dans le cadre de mon cours de support, j'ai configuré le module de gestion des demandes de <strong style="color: var(--cyan);">GLPI</strong> afin de permettre aux utilisateurs de soumettre des tickets d'incidents ou de demandes, et d'en assurer le suivi jusqu'à leur résolution.
+        </p>
+
+        <hr class="divider">
+
+        <div class="steps">
+
+            <div class="step">
+                <div class="step-num">01</div>
+                <div class="step-body">
+                    <h3>Recensement des machines via GLPI</h3>
+                    <p>
+                        Les agents GLPI installés sur les postes clients remontent automatiquement l'inventaire matériel et logiciel. Ces données constituent la base du référentiel d'équipements sur lequel s'appuie la gestion des tickets.
+                    </p>
+                    <div style="margin-top: 1rem; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem;">
+                        <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); margin-bottom: 0.6rem;">GLPI — INTERFACE WEB</div>
+                        <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted);">
+                            http://IP-SERVER<br>
+                            Navigation : Parc &gt; Ordinateurs / Logiciels
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">02</div>
+                <div class="step-body">
+                    <h3>Création des comptes utilisateurs et rôles</h3>
+                    <p>
+                        J'ai créé les comptes utilisateurs dans GLPI et défini les groupes de techniciens responsables du traitement des tickets. Chaque utilisateur se voit attribuer un profil spécifique.
+                    </p>
+
+                    <div class="code-block" style="margin-top: 1.2rem;">
+                        <div class="code-header">
+                            <span class="code-filename">glpi — gestion utilisateurs</span>
+                            <div class="code-dots"><span></span><span></span><span></span></div>
+                        </div>
+                        <pre>
+<span class="cm"># Accès à l'interface GLPI</span>
+<span class="st">http://IP-SERVER</span>
+
+<span class="cm"># Navigation : Administration › Utilisateurs › Ajouter</span>
+
+<span class="cm"># Champs renseignés :</span>
+<span class="cy">Nom</span>         → Nom de famille de l'utilisateur
+<span class="cy">Prénom</span>      → Prénom de l'utilisateur
+<span class="cy">Identifiant</span> → Login unique de connexion
+<span class="cy">Groupe</span>      → Groupe d'appartenance (DSI, Support...)
+<span class="cy">Profil</span>      → Observateur / Technicien / Super-Admin</pre>
+                    </div>
+
+                    <div style="margin-top: 1.2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem;">
+                        <div style="background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center;">
+                            <i class="fa-solid fa-eye" style="color: var(--muted); font-size: 1.2rem; margin-bottom: 0.5rem; display: block;"></i>
+                            <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted);">OBSERVATEUR</div>
+                            <div style="font-size: 0.78rem; color: var(--text); margin-top: 0.3rem;">Lecture seule</div>
+                        </div>
+                        <div style="background: var(--cyan-dim); border: 1px solid rgba(0,238,255,0.3); border-radius: 8px; padding: 1rem; text-align: center;">
+                            <i class="fa-solid fa-wrench" style="color: var(--cyan); font-size: 1.2rem; margin-bottom: 0.5rem; display: block;"></i>
+                            <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--cyan);">TECHNICIEN</div>
+                            <div style="font-size: 0.78rem; color: var(--text); margin-top: 0.3rem;">Traitement des tickets</div>
+                        </div>
+                        <div style="background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center;">
+                            <i class="fa-solid fa-crown" style="color: #febc2e; font-size: 1.2rem; margin-bottom: 0.5rem; display: block;"></i>
+                            <div style="font-family: var(--font-mono); font-size: 0.7rem; color: #febc2e;">SUPER-ADMIN</div>
+                            <div style="font-size: 0.78rem; color: var(--text); margin-top: 0.3rem;">Accès total</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">03</div>
+                <div class="step-body">
+                    <h3>Configuration des catégories et règles d'attribution</h3>
+                    <p>
+                        J'ai paramétré les catégories de tickets et configuré des règles d'attribution automatique pour orienter chaque ticket vers le bon groupe de techniciens.
+                    </p>
+                    <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg3); border: 1px solid var(--border); border-radius: 6px; padding: 0.7rem 1rem;">
+                            <span style="font-size: 0.85rem;"><i class="fa-solid fa-desktop" style="color: var(--cyan); margin-right: 0.5rem;"></i>Incident matériel</span>
+                            <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted);">→ Groupe Support Matériel</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg3); border: 1px solid var(--border); border-radius: 6px; padding: 0.7rem 1rem;">
+                            <span style="font-size: 0.85rem;"><i class="fa-solid fa-code" style="color: var(--cyan); margin-right: 0.5rem;"></i>Incident logiciel</span>
+                            <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted);">→ Groupe Applicatif</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg3); border: 1px solid var(--border); border-radius: 6px; padding: 0.7rem 1rem;">
+                            <span style="font-size: 0.85rem;"><i class="fa-solid fa-network-wired" style="color: var(--cyan); margin-right: 0.5rem;"></i>Incident réseau</span>
+                            <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted);">→ Groupe Infrastructure</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg3); border: 1px solid var(--border); border-radius: 6px; padding: 0.7rem 1rem;">
+                            <span style="font-size: 0.85rem;"><i class="fa-solid fa-user-plus" style="color: var(--cyan); margin-right: 0.5rem;"></i>Demande d'accès</span>
+                            <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted);">→ Groupe Administration</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">04</div>
+                <div class="step-body">
+                    <h3>Cycle de vie d'un ticket</h3>
+                    <p>
+                        Les utilisateurs ouvrent un ticket depuis leur navigateur web. Chaque ticket passe par les statuts suivants, avec traçabilité complète des interventions.
+                    </p>
+
+                    <div style="margin-top: 1.5rem; position: relative;">
+                        <!-- Timeline statuts -->
+                        <div style="display: flex; align-items: center; gap: 0; overflow-x: auto;">
+                            <div style="display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 80px;">
+                                <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--bg3); border: 2px solid var(--cyan); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: var(--cyan);">
+                                    <i class="fa-solid fa-plus"></i>
+                                </div>
+                                <div style="font-size: 0.7rem; color: var(--muted); text-align: center; margin-top: 0.5rem; font-family: var(--font-mono);">Nouveau</div>
+                            </div>
+                            <div style="flex: 1; height: 2px; background: linear-gradient(90deg, var(--cyan), rgba(0,238,255,0.3));"></div>
+                            <div style="display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 80px;">
+                                <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--bg3); border: 2px solid var(--cyan); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: var(--cyan);">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <div style="font-size: 0.7rem; color: var(--muted); text-align: center; margin-top: 0.5rem; font-family: var(--font-mono);">Attribué</div>
+                            </div>
+                            <div style="flex: 1; height: 2px; background: rgba(0,238,255,0.3);"></div>
+                            <div style="display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 80px;">
+                                <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--bg3); border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: var(--muted);">
+                                    <i class="fa-solid fa-calendar"></i>
+                                </div>
+                                <div style="font-size: 0.7rem; color: var(--muted); text-align: center; margin-top: 0.5rem; font-family: var(--font-mono);">Planifié</div>
+                            </div>
+                            <div style="flex: 1; height: 2px; background: rgba(0,238,255,0.3);"></div>
+                            <div style="display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 80px;">
+                                <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--bg3); border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: var(--muted);">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div style="font-size: 0.7rem; color: var(--muted); text-align: center; margin-top: 0.5rem; font-family: var(--font-mono);">Résolu</div>
+                            </div>
+                            <div style="flex: 1; height: 2px; background: rgba(0,238,255,0.3);"></div>
+                            <div style="display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 80px;">
+                                <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--bg3); border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: var(--muted);">
+                                    <i class="fa-solid fa-lock"></i>
+                                </div>
+                                <div style="font-size: 0.7rem; color: var(--muted); text-align: center; margin-top: 0.5rem; font-family: var(--font-mono);">Clos</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 1.2rem; font-size: 0.85rem; color: var(--muted);">
+                        L'historique complet des interventions est conservé dans GLPI et exporté dans <code style="font-family: var(--font-mono); color: var(--cyan);">export_user.pdf</code>.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="conclusion-box">
+            <h4>// Conclusion</h4>
+            <p>
+                Cette réalisation m'a permis de mettre en place un processus structuré de collecte et de suivi des demandes. J'ai compris l'importance d'orienter les tickets vers les bonnes personnes et de maintenir une traçabilité complète des interventions pour améliorer la qualité de service.
+            </p>
+        </div>
+
+    </div>
+
+    <aside class="content-sidebar">
+        <div class="info-box">
+            <h4>// Compétence</h4>
+            <ul>
+                <li>C7 — Collecter, suivre et orienter les demandes</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h4>// Outils</h4>
+            <ul>
+                <li>GLPI 10.0.20 — Module tickets</li>
+                <li>Gestion des rôles (RBAC)</li>
+                <li>Règles d'attribution auto</li>
+                <li>Interface web navigateur</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h4>// Profils créés</h4>
+            <ul>
+                <li>Observateur (lecture seule)</li>
+                <li>Technicien (traitement)</li>
+                <li>Super-Admin (administration)</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h4>// Catégories de tickets</h4>
+            <ul>
+                <li>Incident matériel</li>
+                <li>Incident logiciel</li>
+                <li>Incident réseau</li>
+                <li>Demande d'accès</li>
+            </ul>
+        </div>
+    </aside>
+
+</main>
+
+<div class="page-nav">
+    <a href="c1.html"><i class="fa-solid fa-arrow-left"></i> C1 — Recenser</a>
+    <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted);">2 / 5</span>
+    <a href="c11.html">C11 — Référencer <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+
+<footer><p>&copy; 2025 Noah FINE — BTS SIO SISR</p></footer>
+
+<script src="script.js"></script>
+</body>
+</html>

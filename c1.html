@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C1 — Recenser les ressources numériques | Noah FINE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="index.html" class="logo">Noah<span>Fine</span></a>
+    <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="index.html#about">À propos</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-competences">
+        <a href="c1.html" class="active">C1</a>
+        <a href="c7.html">C7</a>
+        <a href="c11.html">C11</a>
+        <a href="c14.html">C14</a>
+        <a href="c17.html">C17</a>
+    </div>
+    <div class="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<header class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-glow"></div>
+    <div class="page-hero-content">
+        <div class="page-badge">
+            <i class="fa-solid fa-server"></i> Compétence C1
+        </div>
+        <h1>Recenser et identifier les<br><span>ressources numériques</span></h1>
+        <p class="page-hero-desc">
+            Déploiement de GLPI sur une VM Azure pour centraliser l'inventaire du parc informatique — machines, logiciels et utilisateurs.
+        </p>
+    </div>
+</header>
+
+<main class="content-layout">
+
+    <!-- MAIN CONTENT -->
+    <div class="content-main">
+
+        <div class="section-header" style="margin-bottom: 2rem;">
+            <p class="section-label">// contexte</p>
+            <h2 class="section-title" style="font-size: 1.6rem;">Réalisation professionnelle</h2>
+        </div>
+
+        <p style="color: var(--muted); line-height: 1.8; margin-bottom: 2rem;">
+            Dans le cadre de mon cours de support que j'ai réalisé à l'<strong style="color: var(--text);">Efrei</strong>, j'ai été amené à recenser et identifier les ressources numériques d'une organisation. Pour cela, j'ai déployé <strong style="color: var(--cyan);">GLPI</strong> sur un serveur Azure (VM Debian/Ubuntu) afin de centraliser l'inventaire du parc informatique.
+        </p>
+
+        <hr class="divider">
+
+        <!-- STEPS -->
+        <div class="steps">
+
+            <div class="step">
+                <div class="step-num">01</div>
+                <div class="step-body">
+                    <h3>Déploiement du serveur GLPI sur Azure</h3>
+                    <p>
+                        J'ai d'abord provisionné une <strong style="color:var(--text)">machine virtuelle Azure</strong> (Debian/Ubuntu) et installé GLPI 10.0.20 via le script <code style="font-family:var(--font-mono);color:var(--cyan)">install-glpi.sh</code> (retrouvable dans le C17). Ce script automatise l'ensemble de la chaîne : <strong style="color:var(--text)">Apache, PHP 8.3 et MariaDB</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">02</div>
+                <div class="step-body">
+                    <h3>Déploiement de l'agent GLPI sur les postes clients</h3>
+                    <p>
+                        Une fois le serveur opérationnel, j'ai installé l'agent GLPI sur chaque poste client à l'aide du script <code style="font-family:var(--font-mono);color:var(--cyan)">install-glpiagent.sh</code>. L'agent remonte automatiquement l'inventaire matériel et logiciel vers le serveur.
+                    </p>
+
+                    <div class="code-block" style="margin-top: 1.2rem;">
+                        <div class="code-header">
+                            <span class="code-filename">install-glpiagent.sh</span>
+                            <div class="code-dots"><span></span><span></span><span></span></div>
+                        </div>
+                        <pre>
+<span class="cm">#!/bin/bash</span>
+<span class="cm">######################</span>
+<span class="cm"># Launch with SUDO   #</span>
+<span class="cm">######################</span>
+
+<span class="cm"># Arrêt du script en cas d'erreur</span>
+<span class="kw">set</span> -e
+
+<span class="cm"># Installation des dépendances Perl nécessaires à l'agent</span>
+<span class="kw">sudo</span> apt install -y perl libnet-ssleay-perl libcrypt-ssleay-perl \
+  libio-socket-ssl-perl libarchive-zip-perl \
+  libwww-perl libxml-xpath-perl libyaml-tiny-perl \
+  dmidecode hwdata pciutils usbutils
+
+<span class="cm"># Téléchargement du paquet d'installation de l'agent GLPI 1.7</span>
+<span class="fn">wget</span> <span class="st">https://github.com/glpi-project/glpi-agent/releases/download/1.7/glpi-agent-1.7-linux-installer.pl</span>
+
+<span class="cm"># Installation avec connexion automatique au serveur GLPI</span>
+<span class="kw">sudo</span> perl glpi-agent-1.7-linux-installer.pl \
+  --server=<span class="st">"http://IP-SERVER/front/inventory.php"</span> \
+  --install --runnow
+
+<span class="cm"># Vérification que le service glpi-agent est bien actif</span>
+systemctl status glpi-agent
+
+<span class="cm"># Forcer un inventaire immédiat vers le serveur</span>
+glpi-agent --force</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">03</div>
+                <div class="step-body">
+                    <h3>Hébergement et accès (Azure & GitHub Pages)</h3>
+                    <p>
+                        Le service GLPI est hébergé sur une <strong style="color:var(--text)">VM Azure</strong> accessible publiquement. En parallèle, le portfolio et les documentations associées ont été déployés sur <strong style="color:var(--text)">GitHub Pages</strong> pour une visibilité permanente et gratuite.
+                    </p>
+                    <div style="margin-top: 1rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
+                        <div style="background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 1rem;">
+                            <div style="color: var(--cyan); font-family: var(--font-mono); font-size: 0.7rem; margin-bottom: 0.5rem;">AZURE VM</div>
+                            <div style="font-size: 0.85rem; color: var(--muted);">OS : Ubuntu<br>Version : ubuntu 24.04<br>Service : GLPI 10.0.20</div>
+                        </div>
+                        <div style="background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 1rem;">
+                            <div style="color: var(--cyan); font-family: var(--font-mono); font-size: 0.7rem; margin-bottom: 0.5rem;">GITHUB PAGES</div>
+                            <div style="font-size: 0.85rem; color: var(--muted);">Hébergement statique<br>URL permanente publique<br>Déploiement automatique</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">04</div>
+                <div class="step-body">
+                    <h3>Consultation et export de l'inventaire</h3>
+                    <p>
+                        Les données remontées par les agents ont permis d'obtenir un inventaire complet accessible depuis l'interface GLPI. Trois rapports PDF ont été exportés comme preuves :
+                    </p>
+                    <div style="display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1rem;">
+                        <div style="display: flex; align-items: center; gap: 0.8rem; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 0.8rem 1rem;">
+                            <i class="fa-solid fa-file-pdf" style="color: #f47067;"></i>
+                            <div>
+                                <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text);">export_ordi.pdf</div>
+                                <div style="font-size: 0.78rem; color: var(--muted);">Liste des ordinateurs recensés (modèle, IP, OS)</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.8rem; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 0.8rem 1rem;">
+                            <i class="fa-solid fa-file-pdf" style="color: #f47067;"></i>
+                            <div>
+                                <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text);">export_soft.pdf</div>
+                                <div style="font-size: 0.78rem; color: var(--muted);">Logiciels installés sur chaque poste</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.8rem; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 0.8rem 1rem;">
+                            <i class="fa-solid fa-file-pdf" style="color: #f47067;"></i>
+                            <div>
+                                <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text);">export_user.pdf</div>
+                                <div style="font-size: 0.78rem; color: var(--muted);">Comptes utilisateurs créés et associés aux équipements</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="conclusion-box">
+            <h4>// Conclusion</h4>
+            <p>
+                Cette réalisation m'a permis de comprendre comment recenser et identifier les ressources numériques d'une organisation à l'aide d'un outil ITSM. J'ai appris à déployer un agent sur des machines Linux et à exploiter les données remontées pour constituer un inventaire fiable et centralisé du système d'information.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="content-sidebar">
+        <div class="info-box">
+            <h4>// Compétence</h4>
+            <ul>
+                <li>C1 — Recenser et identifier les ressources numériques</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h4>// Technologies</h4>
+            <ul>
+                <li>GLPI 10.0.20</li>
+                <li>Agent GLPI 1.7</li>
+                <li>Microsoft Azure (VM)</li>
+                <li>Debian / Ubuntu</li>
+                <li>GitHub Pages</li>
+                <li>Bash scripting</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h4>// Données collectées</h4>
+            <ul>
+                <li>Inventaire matériel (modèle, IP, OS)</li>
+                <li>Logiciels installés</li>
+                <li>Comptes utilisateurs</li>
+                <li>Export PDF des rapports</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h4>// Liens utiles</h4>
+            <ul>
+                <li><a href="https://glpi-project.org" target="_blank" style="color: var(--cyan);">GLPI Project ↗</a></li>
+                <li><a href="https://github.com/wolfnono" target="_blank" style="color: var(--cyan);">GitHub — wolfnono ↗</a></li>
+                <li><a href="https://linkedin.com/in/noah-fine-12663a2b7" target="_blank" style="color: var(--cyan);">LinkedIn ↗</a></li>
+            </ul>
+        </div>
+    </aside>
+
+</main>
+
+<div class="page-nav">
+    <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Retour au portfolio</a>
+    <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted);">1 / 5</span>
+    <a href="c7.html">C7 — Suivre les demandes <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+
+<footer><p>&copy; 2025 Noah FINE — BTS SIO SISR</p></footer>
+
+<script src="script.js"></script>
+</body>
+</html>

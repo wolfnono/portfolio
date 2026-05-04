@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C11 — Référencement et visibilité | Noah FINE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="index.html" class="logo">Noah<span>Fine</span></a>
+    <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="index.html#about">À propos</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-competences">
+        <a href="c1.html">C1</a>
+        <a href="c7.html">C7</a>
+        <a href="c11.html" class="active">C11</a>
+        <a href="c14.html">C14</a>
+        <a href="c17.html">C17</a>
+    </div>
+    <div class="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<header class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-glow"></div>
+    <div class="page-hero-content">
+        <div class="page-badge">
+            <i class="fa-solid fa-magnifying-glass-chart"></i> Compétence C11
+        </div>
+        <h1>Référencer les services et mesurer<br><span>leur visibilité</span></h1>
+        <p class="page-hero-desc">
+            Intégration de balises méta SEO et de Google Analytics (gtag.js) pour indexer et mesurer l'audience d'un service web déployé sur GitHub Pages.
+        </p>
+    </div>
+</header>
+
+<main class="content-layout">
+
+    <div class="content-main">
+
+        <div class="section-header" style="margin-bottom: 2rem;">
+            <p class="section-label">// contexte</p>
+            <h2 class="section-title" style="font-size: 1.6rem;">Réalisation professionnelle</h2>
+        </div>
+
+        <p style="color: var(--muted); line-height: 1.8; margin-bottom: 2rem;">
+            Dans le cadre du projet, j'ai travaillé sur la <strong style="color: var(--text);">visibilité en ligne</strong> d'un service web déployé sur <strong style="color: var(--cyan);">GitHub Pages</strong>. J'ai intégré des balises HTML sémantiques pour améliorer le référencement naturel et mis en place une balise <strong style="color: var(--cyan);">Google Tag</strong> pour mesurer l'audience et la visibilité du service.
+        </p>
+
+        <hr class="divider">
+
+        <div class="steps">
+
+            <div class="step">
+                <div class="step-num">01</div>
+                <div class="step-body">
+                    <h3>Structuration HTML sémantique et balises méta SEO</h3>
+                    <p>
+                        J'ai structuré le code HTML avec des balises sémantiques (<code style="font-family:var(--font-mono);color:var(--cyan)">header</code>, <code style="font-family:var(--font-mono);color:var(--cyan)">main</code>, <code style="font-family:var(--font-mono);color:var(--cyan)">section</code>, <code style="font-family:var(--font-mono);color:var(--cyan)">footer</code>) et des métadonnées pour optimiser l'indexation par les moteurs de recherche.
+                    </p>
+                    <div class="code-block" style="margin-top: 1.2rem;">
+                        <div class="code-header">
+                            <span class="code-filename">index.html — balises &lt;head&gt; SEO</span>
+                            <div class="code-dots"><span></span><span></span><span></span></div>
+                        </div>
+                        <pre>
+<span class="kw">&lt;head&gt;</span>
+  <span class="fn">&lt;meta</span> charset=<span class="st">"UTF-8"</span><span class="fn">&gt;</span>
+  <span class="fn">&lt;meta</span> name=<span class="st">"viewport"</span>
+        content=<span class="st">"width=device-width, initial-scale=1.0"</span><span class="fn">&gt;</span>
+
+  <span class="cm">&lt;!-- Balises méta SEO --&gt;</span>
+  <span class="fn">&lt;meta</span> name=<span class="st">"description"</span>
+        content=<span class="st">"Erreur 404 Found - Hackathon BTS SIO 2025"</span><span class="fn">&gt;</span>
+  <span class="fn">&lt;meta</span> name=<span class="st">"keywords"</span>
+        content=<span class="st">"BTS SIO, hackathon, GLPI, informatique"</span><span class="fn">&gt;</span>
+  <span class="fn">&lt;meta</span> name=<span class="st">"author"</span> content=<span class="st">"Noah FINE"</span><span class="fn">&gt;</span>
+
+  <span class="kw">&lt;title&gt;</span>Erreur 404 Found | Hackathon 2025<span class="kw">&lt;/title&gt;</span>
+<span class="kw">&lt;/head&gt;</span></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">02</div>
+                <div class="step-body">
+                    <h3>Intégration de la balise Google Tag (gtag.js)</h3>
+                    <p>
+                        J'ai intégré le script Google Tag dans le <code style="font-family:var(--font-mono);color:var(--cyan)">&lt;head&gt;</code> de chaque page pour activer le suivi de l'audience. Cela permet de mesurer le trafic, les sources de visites et les pages consultées.
+                    </p>
+                    <div class="code-block" style="margin-top: 1.2rem;">
+                        <div class="code-header">
+                            <span class="code-filename">index.html — Google Tag (gtag.js)</span>
+                            <div class="code-dots"><span></span><span></span><span></span></div>
+                        </div>
+                        <pre>
+<span class="cm">&lt;!-- Google tag (gtag.js) --&gt;</span>
+<span class="kw">&lt;script</span> async
+  src=<span class="st">"https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"</span><span class="kw">&gt;</span>
+<span class="kw">&lt;/script&gt;</span>
+
+<span class="kw">&lt;script&gt;</span>
+  <span class="cy">window</span>.dataLayer = <span class="cy">window</span>.dataLayer || [];
+  <span class="kw">function</span> <span class="fn">gtag</span>(){dataLayer.<span class="fn">push</span>(arguments);}
+
+  <span class="fn">gtag</span>(<span class="st">'js'</span>, <span class="kw">new</span> <span class="fn">Date</span>());
+  <span class="fn">gtag</span>(<span class="st">'config'</span>, <span class="st">'G-XXXXXXXXXX'</span>);
+<span class="kw">&lt;/script&gt;</span></pre>
+                    </div>
+
+                    <div style="margin-top: 1.2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem;">
+                        <div style="background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center;">
+                            <i class="fa-solid fa-users" style="color: var(--cyan); font-size: 1.3rem; margin-bottom: 0.5rem; display: block;"></i>
+                            <div style="font-size: 0.8rem; font-weight: 600;">Audience</div>
+                            <div style="font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem;">Visiteurs uniques & sessions</div>
+                        </div>
+                        <div style="background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center;">
+                            <i class="fa-solid fa-globe" style="color: var(--cyan); font-size: 1.3rem; margin-bottom: 0.5rem; display: block;"></i>
+                            <div style="font-size: 0.8rem; font-weight: 600;">Provenance</div>
+                            <div style="font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem;">Sources de trafic & pays</div>
+                        </div>
+                        <div style="background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center;">
+                            <i class="fa-solid fa-chart-line" style="color: var(--cyan); font-size: 1.3rem; margin-bottom: 0.5rem; display: block;"></i>
+                            <div style="font-size: 0.8rem; font-weight: 600;">Comportement</div>
+                            <div style="font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem;">Pages vues & durée</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">03</div>
+                <div class="step-body">
+                    <h3>Déploiement sur GitHub Pages et mesure de visibilité</h3>
+                    <p>
+                        Le site a été déployé sur <strong style="color:var(--text)">GitHub Pages</strong> avec une URL publique permanente. La structure H1/H2 respectée et les métadonnées renseignées permettent une indexation correcte par les moteurs de recherche.
+                    </p>
+
+                    <div style="margin-top: 1.2rem;">
+                        <div style="background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem;">
+                            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); margin-bottom: 1rem;">BONNES PRATIQUES SEO APPLIQUÉES</div>
+                            <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+                                <div style="display: flex; align-items: center; gap: 0.8rem;">
+                                    <i class="fa-solid fa-circle-check" style="color: #28c840; font-size: 0.9rem;"></i>
+                                    <span style="font-size: 0.85rem; color: var(--muted);">Balise <code style="color:var(--cyan); font-family:var(--font-mono)">description</code> renseignée sur chaque page</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.8rem;">
+                                    <i class="fa-solid fa-circle-check" style="color: #28c840; font-size: 0.9rem;"></i>
+                                    <span style="font-size: 0.85rem; color: var(--muted);">Balise <code style="color:var(--cyan); font-family:var(--font-mono)">keywords</code> avec termes pertinents</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.8rem;">
+                                    <i class="fa-solid fa-circle-check" style="color: #28c840; font-size: 0.9rem;"></i>
+                                    <span style="font-size: 0.85rem; color: var(--muted);">Structure sémantique H1/H2 respectée</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.8rem;">
+                                    <i class="fa-solid fa-circle-check" style="color: #28c840; font-size: 0.9rem;"></i>
+                                    <span style="font-size: 0.85rem; color: var(--muted);">Balises <code style="color:var(--cyan); font-family:var(--font-mono)">header, main, section, footer</code></span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.8rem;">
+                                    <i class="fa-solid fa-circle-check" style="color: #28c840; font-size: 0.9rem;"></i>
+                                    <span style="font-size: 0.85rem; color: var(--muted);">Google Tag actif sur toutes les pages</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.8rem;">
+                                    <i class="fa-solid fa-circle-check" style="color: #28c840; font-size: 0.9rem;"></i>
+                                    <span style="font-size: 0.85rem; color: var(--muted);">URL permanente via GitHub Pages</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="conclusion-box">
+            <h4>// Conclusion</h4>
+            <p>
+                Cette réalisation m'a permis de comprendre les mécanismes du référencement naturel (SEO) et d'apprendre à mesurer la visibilité d'un service en ligne. L'intégration de Google Tag m'a donné accès à des données d'audience concrètes, utiles pour évaluer et améliorer la présence en ligne d'une organisation.
+            </p>
+        </div>
+
+    </div>
+
+    <aside class="content-sidebar">
+        <div class="info-box">
+            <h4>// Compétence</h4>
+            <ul>
+                <li>C11 — Référencer les services en ligne et mesurer leur visibilité</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h4>// Outils</h4>
+            <ul>
+                <li>Google Analytics (gtag.js)</li>
+                <li>GitHub Pages</li>
+                <li>HTML sémantique</li>
+                <li>Balises méta SEO</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h4>// Métriques suivies</h4>
+            <ul>
+                <li>Visiteurs uniques</li>
+                <li>Pages vues</li>
+                <li>Sources de trafic</li>
+                <li>Provenance géographique</li>
+                <li>Durée des sessions</li>
+            </ul>
+        </div>
+    </aside>
+
+</main>
+
+<div class="page-nav">
+    <a href="c7.html"><i class="fa-solid fa-arrow-left"></i> C7 — Suivre</a>
+    <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted);">3 / 5</span>
+    <a href="c14.html">C14 — Planifier <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+
+<footer><p>&copy; 2025 Noah FINE — BTS SIO SISR</p></footer>
+
+<script src="script.js"></script>
+</body>
+</html>

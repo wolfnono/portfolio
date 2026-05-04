@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C17 — Déploiement de service | Noah FINE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="index.html" class="logo">Noah<span>Fine</span></a>
+    <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="index.html#about">À propos</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-competences">
+        <a href="c1.html">C1</a>
+        <a href="c7.html">C7</a>
+        <a href="c11.html">C11</a>
+        <a href="c14.html">C14</a>
+        <a href="c17.html" class="active">C17</a>
+    </div>
+    <div class="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<header class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-glow"></div>
+    <div class="page-hero-content">
+        <div class="page-badge">
+            <i class="fa-solid fa-rocket"></i> Compétence C17
+        </div>
+        <h1>Déployer un service<br><span>en production</span></h1>
+        <p class="page-hero-desc">
+            Déploiement complet de GLPI sur Azure : automatisation de la stack LAMP, agent d'inventaire, serveur web Apache et système de sauvegarde/restauration automatisé vers Google Drive.
+        </p>
+    </div>
+</header>
+
+<main class="content-layout">
+
+    <div class="content-main">
+
+        <div class="section-header" style="margin-bottom: 2rem;">
+            <p class="section-label">// contexte</p>
+            <h2 class="section-title" style="font-size: 1.6rem;">Réalisation professionnelle</h2>
+        </div>
+
+        <p style="color: var(--muted); line-height: 1.8; margin-bottom: 2rem;">
+            Dans le cadre de mon cours de support, j'ai déployé une infrastructure <strong style="color: var(--cyan);">GLPI complète</strong> sur un serveur Azure (VM Ubuntu). Ce déploiement comprend l'installation automatisée de GLPI, la mise en place d'un agent d'inventaire, ainsi qu'un système de sauvegarde et restauration automatisé vers Google Drive.
+        </p>
+
+        <!-- Architecture overview -->
+        <div style="background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem;">
+            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); margin-bottom: 1.2rem; letter-spacing: 0.1em;">// ARCHITECTURE DÉPLOYÉE</div>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; text-align: center;">
+                <div>
+                    <div style="width: 48px; height: 48px; background: var(--cyan-dim); border: 1px solid rgba(0,238,255,0.3); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.6rem; font-size: 1.2rem; color: var(--cyan);">
+                        <i class="fa-solid fa-cloud"></i>
+                    </div>
+                    <div style="font-size: 0.78rem; font-weight: 700;">Azure VM</div>
+                    <div style="font-size: 0.7rem; color: var(--muted);">Debian/Ubuntu</div>
+                </div>
+                <div>
+                    <div style="width: 48px; height: 48px; background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.6rem; font-size: 1.2rem; color: var(--muted);">
+                        <i class="fa-solid fa-server"></i>
+                    </div>
+                    <div style="font-size: 0.78rem; font-weight: 700;">Apache + PHP</div>
+                    <div style="font-size: 0.7rem; color: var(--muted);">Serveur web</div>
+                </div>
+                <div>
+                    <div style="width: 48px; height: 48px; background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.6rem; font-size: 1.2rem; color: var(--muted);">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+                    <div style="font-size: 0.78rem; font-weight: 700;">MariaDB</div>
+                    <div style="font-size: 0.7rem; color: var(--muted);">Base de données</div>
+                </div>
+                <div>
+                    <div style="width: 48px; height: 48px; background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.6rem; font-size: 1.2rem; color: var(--muted);">
+                        <i class="fa-brands fa-google-drive"></i>
+                    </div>
+                    <div style="font-size: 0.78rem; font-weight: 700;">Google Drive</div>
+                    <div style="font-size: 0.7rem; color: var(--muted);">Backups via rclone</div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <div class="steps">
+
+            <!-- ÉTAPE 1 -->
+            <div class="step">
+                <div class="step-num">01</div>
+                <div class="step-body">
+                    <h3>Installation automatisée de GLPI — <code style="font-family:var(--font-mono);color:var(--cyan);font-size:0.85em">install-glpi.sh</code></h3>
+                    <p>
+                        J'ai créé un script bash complet qui automatise l'installation de toute la pile LAMP (<strong style="color:var(--text)">Apache, PHP 8.3, MariaDB</strong>) ainsi que GLPI 10.0.20. Le script détecte automatiquement l'IP du serveur, configure le VirtualHost Apache et sécurise les cookies PHP.
+                    </p>
+                    <div class="code-block" style="margin-top: 1.2rem;">
+                        <div class="code-header">
+                            <span class="code-filename">install-glpi.sh</span>
+                            <div class="code-dots"><span></span><span></span><span></span></div>
+                        </div>
+                        <pre>
+<span class="cm">#!/bin/bash</span>
+<span class="kw">set</span> -e  <span class="cm"># Arrêt du script en cas d'erreur</span>
+
+<span class="cm"># Étape 1 : Récupération de l'adresse IP de la machine</span>
+<span class="cy">SERVER_IP</span>=$(hostname -I | awk <span class="st">'{print $1}'</span>)
+echo <span class="st">"L'adresse IP détectée est : $SERVER_IP"</span>
+
+<span class="cm"># Étape 2 : Mise à jour système + installation Apache</span>
+apt update -y && apt install apache2 -y
+
+<span class="cm"># Étape 3 : Ajout du dépôt PHP 8.3 (sury.org) + installation PHP</span>
+apt install -y lsb-release ca-certificates apt-transport-https curl
+curl -sSLo /tmp/debsuryorg-archive-keyring.deb \
+  https://packages.sury.org/debsuryorg-archive-keyring.deb
+dpkg -i /tmp/debsuryorg-archive-keyring.deb
+apt update -y
+apt install -y php8.3 php8.3-xml php8.3-dom php8.3-gd php8.3-intl \
+  php8.3-mysql php8.3-zip php8.3-curl php8.3-mbstring \
+  php8.3-bz2 php8.3-exif php8.3-ldap openssl php8.3-opcache
+
+<span class="cm"># Étape 4 : Installation et sécurisation de MariaDB</span>
+apt install mariadb-server -y
+mysql -e <span class="st">"ALTER USER 'root'@'localhost' IDENTIFIED BY 'MotDePasseGLPIFort';</span>
+<span class="st">         FLUSH PRIVILEGES;"</span>
+
+<span class="cm"># Étape 5 : Téléchargement et extraction de GLPI 10.0.20</span>
+wget https://github.com/glpi-project/glpi/releases/download/10.0.20/glpi-10.0.20.tgz
+tar -xvzf glpi-10.0.20.tgz
+mv glpi /var/www/
+
+<span class="cm"># Étape 6 : Configuration du VirtualHost Apache</span>
+a2enmod rewrite
+cat <span class="st">&lt;&lt;EOF &gt; /etc/apache2/sites-available/glpi.conf</span>
+<span class="st">&lt;VirtualHost *:80&gt;</span>
+<span class="st">  ServerName glpi.localhost</span>
+<span class="st">  ServerAlias $SERVER_IP</span>
+<span class="st">  DocumentRoot /var/www/glpi/public</span>
+<span class="st">  &lt;Directory /var/www/glpi/public&gt;</span>
+<span class="st">    Require all granted</span>
+<span class="st">    RewriteEngine On</span>
+<span class="st">    RewriteCond %{REQUEST_FILENAME} !-f</span>
+<span class="st">    RewriteRule ^(.*)$ index.php [QSA,L]</span>
+<span class="st">  &lt;/Directory&gt;</span>
+<span class="st">&lt;/VirtualHost&gt;</span>
+<span class="st">EOF</span>
+a2ensite glpi.conf
+
+<span class="cm"># Étape 7 : Permissions et sécurisation des cookies PHP</span>
+chown www-data:www-data /var/www/glpi/config/
+chown -R www-data:www-data /var/www/glpi/files/
+sed -i <span class="st">'s/.*session.cookie_httponly.*/session.cookie_httponly = On/'</span> \
+  /etc/php/8.3/apache2/php.ini
+
+<span class="cm"># Étape 8 : Redémarrage Apache</span>
+systemctl restart apache2
+echo <span class="st">"=== Installation terminée ! Rendez-vous sur http://$SERVER_IP ==="</span></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ÉTAPE 2 -->
+            <div class="step">
+                <div class="step-num">02</div>
+                <div class="step-body">
+                    <h3>Déploiement de l'agent GLPI sur les postes clients</h3>
+                    <p>
+                        L'agent GLPI est installé sur chaque poste client via <code style="font-family:var(--font-mono);color:var(--cyan)">install-glpiagent.sh</code> (retrouvable dans le C1) et remonte automatiquement l'inventaire matériel et logiciel vers le serveur central.
+                    </p>
+                    <div style="margin-top: 1rem; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 1rem;">
+                        <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); margin-bottom: 0.8rem;">FLUX DE REMONTÉE D'INVENTAIRE</div>
+                        <div style="display: flex; align-items: center; gap: 1rem; overflow-x: auto; padding-bottom: 0.3rem;">
+                            <div style="background: var(--bg2); border: 1px solid rgba(0,238,255,0.3); border-radius: 8px; padding: 0.6rem 1rem; white-space: nowrap; font-size: 0.8rem; font-family: var(--font-mono);">Poste client</div>
+                            <div style="color: var(--cyan); font-size: 0.8rem; white-space: nowrap;">→ Agent GLPI →</div>
+                            <div style="background: var(--cyan-dim); border: 1px solid rgba(0,238,255,0.4); border-radius: 8px; padding: 0.6rem 1rem; white-space: nowrap; font-size: 0.8rem; font-family: var(--font-mono);">Server GLPI</div>
+                            <div style="color: var(--cyan); font-size: 0.8rem; white-space: nowrap;">→</div>
+                            <div style="background: var(--bg2); border: 1px solid rgba(0,238,255,0.3); border-radius: 8px; padding: 0.6rem 1rem; white-space: nowrap; font-size: 0.8rem; font-family: var(--font-mono);">MariaDB GLPI</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ÉTAPE 3 -->
+            <div class="step">
+                <div class="step-num">03</div>
+                <div class="step-body">
+                    <h3>Sauvegarde automatique vers Google Drive — <code style="font-family:var(--font-mono);color:var(--cyan);font-size:0.85em">glpi-backup.sh</code></h3>
+                    <p>
+                        Script de sauvegarde automatique qui crée un dump SQL de la base de données et une archive des fichiers GLPI, puis les transfère vers Google Drive via <strong style="color:var(--text)">rclone</strong>. Les fichiers de plus de 7 jours sont automatiquement supprimés.
+                    </p>
+                    <div class="code-block" style="margin-top: 1.2rem;">
+                        <div class="code-header">
+                            <span class="code-filename">glpi-backup.sh</span>
+                            <div class="code-dots"><span></span><span></span><span></span></div>
+                        </div>
+                        <pre>
+<span class="cm">#!/bin/bash</span>
+<span class="cm"># Horodatage pour nommer les fichiers</span>
+<span class="cy">DATE</span>=$(date +<span class="st">"%Y-%m-%d_%H-%M-%S"</span>)
+<span class="cy">SOURCE_FILES</span>=<span class="st">"/var/www/glpi"</span>
+<span class="cy">BACKUP_DIR</span>=<span class="st">"/home/glpi_backup"</span>
+<span class="cy">DB_NAME</span>=<span class="st">"glpi"</span>
+<span class="cy">CLOUD_REMOTE</span>=<span class="st">"google_drive"</span>
+<span class="cy">CLOUD_BUCKET</span>=<span class="st">"BackupsGLPI"</span>
+
+mkdir -p <span class="st">"$BACKUP_DIR"</span>
+
+<span class="cm"># Étape 1 : Dump SQL de la base de données GLPI</span>
+echo <span class="st">"Début du dump SQL..."</span>
+mysqldump --databases <span class="st">"$DB_NAME"</span> &gt; <span class="st">"$BACKUP_DIR/glpi_db_$DATE.sql"</span>
+
+<span class="cm"># Étape 2 : Archive compressée des fichiers GLPI</span>
+echo <span class="st">"Compression des fichiers..."</span>
+tar -czf <span class="st">"$BACKUP_DIR/glpi_files_$DATE.tar.gz"</span> <span class="st">"$SOURCE_FILES"</span>
+
+<span class="cm"># Étape 3 : Envoi vers Google Drive via rclone</span>
+echo <span class="st">"Envoi vers le cloud..."</span>
+rclone copy <span class="st">"$BACKUP_DIR/glpi_db_$DATE.sql"</span> \
+  <span class="st">"$CLOUD_REMOTE:$CLOUD_BUCKET"</span>
+rclone copy <span class="st">"$BACKUP_DIR/glpi_files_$DATE.tar.gz"</span> \
+  <span class="st">"$CLOUD_REMOTE:$CLOUD_BUCKET"</span>
+
+<span class="cm"># Étape 4 : Purge des sauvegardes locales de plus de 7 jours</span>
+find <span class="st">"$BACKUP_DIR"</span> -type f -mtime +7 -delete
+
+echo <span class="st">"Backup terminé avec succès pour le $DATE"</span></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ÉTAPE 4 -->
+            <div class="step">
+                <div class="step-num">04</div>
+                <div class="step-body">
+                    <h3>Restauration depuis Google Drive — <code style="font-family:var(--font-mono);color:var(--cyan);font-size:0.85em">glpi-restorebackup.sh</code></h3>
+                    <p>
+                        En cas de panne ou de perte de données, ce script récupère automatiquement la dernière sauvegarde disponible sur Google Drive, restaure la base de données et les fichiers GLPI.
+                    </p>
+                    <div class="code-block" style="margin-top: 1.2rem;">
+                        <div class="code-header">
+                            <span class="code-filename">glpi-restorebackup.sh</span>
+                            <div class="code-dots"><span></span><span></span><span></span></div>
+                        </div>
+                        <pre>
+<span class="cm">#!/bin/bash</span>
+<span class="cy">BACKUP_DIR</span>=<span class="st">"/home/glpi_restore_tmp"</span>
+<span class="cy">DB_NAME</span>=<span class="st">"glpi"</span>
+<span class="cy">CLOUD_REMOTE</span>=<span class="st">"google_drive"</span>
+<span class="cy">CLOUD_BUCKET</span>=<span class="st">"BackupsGLPI"</span>
+
+mkdir -p <span class="st">"$BACKUP_DIR"</span>
+
+<span class="cm"># Étape 1 : Récupération des noms des derniers fichiers sur Cloud</span>
+echo <span class="st">"--- Récupération du dernier backup sur Cloud ---"</span>
+<span class="cy">LAST_SQL</span>=$(rclone lsf <span class="st">"$CLOUD_REMOTE:$CLOUD_BUCKET"</span> \
+  | grep <span class="st">'glpi_db_'</span> | sort -r | head -n 1)
+<span class="cy">LAST_FILES</span>=$(rclone lsf <span class="st">"$CLOUD_REMOTE:$CLOUD_BUCKET"</span> \
+  | grep <span class="st">'glpi_files_'</span> | sort -r | head -n 1)
+
+<span class="kw">if</span> [ -z <span class="st">"$LAST_SQL"</span> ] || [ -z <span class="st">"$LAST_FILES"</span> ]; <span class="kw">then</span>
+  echo <span class="st">"Erreur : Impossible de trouver les sauvegardes."</span>
+  exit 1
+<span class="kw">fi</span>
+
+<span class="cm"># Étape 2 : Téléchargement de la dernière sauvegarde</span>
+rclone copy <span class="st">"$CLOUD_REMOTE:$CLOUD_BUCKET/$LAST_SQL"</span> <span class="st">"$BACKUP_DIR"</span>
+rclone copy <span class="st">"$CLOUD_REMOTE:$CLOUD_BUCKET/$LAST_FILES"</span> <span class="st">"$BACKUP_DIR"</span>
+
+<span class="cm"># Étape 3 : Restauration de la base de données</span>
+mysql <span class="st">"$DB_NAME"</span> &lt; <span class="st">"$BACKUP_DIR/$LAST_SQL"</span>
+echo <span class="st">"Base de données restaurée."</span>
+
+<span class="cm"># Étape 4 : Restauration des fichiers GLPI</span>
+tar -xzf <span class="st">"$BACKUP_DIR/$LAST_FILES"</span> -C /
+
+<span class="cm"># Étape 5 : Nettoyage du dossier temporaire</span>
+rm -rf <span class="st">"$BACKUP_DIR"</span>
+echo <span class="st">"Restauration terminée : $(date)"</span></pre>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="conclusion-box">
+            <h4>// Conclusion</h4>
+            <p>
+                Cette réalisation m'a permis de déployer de bout en bout un service ITSM complet en environnement cloud. J'ai acquis des compétences solides en administration Linux, configuration Apache/PHP/MariaDB, et automatisation des sauvegardes. Le service est opérationnel, accessible publiquement et sécurisé avec des sauvegardes automatiques vers Google Drive.
+            </p>
+        </div>
+
+    </div>
+
+    <aside class="content-sidebar">
+        <div class="info-box">
+            <h4>// Compétence</h4>
+            <ul>
+                <li>C17 — Déployer un service en production</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h4>// Stack technique</h4>
+            <ul>
+                <li>Microsoft Azure (VM)</li>
+                <li>Debian / Ubuntu</li>
+                <li>Apache 2</li>
+                <li>PHP 8.3</li>
+                <li>MariaDB</li>
+                <li>GLPI 10.0.20</li>
+                <li>rclone + Google Drive</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h4>// Scripts produits</h4>
+            <ul>
+                <li><code style="font-family:var(--font-mono);color:var(--cyan);font-size:0.85em">install-glpi.sh</code></li>
+                <li><code style="font-family:var(--font-mono);color:var(--cyan);font-size:0.85em">install-glpiagent.sh</code></li>
+                <li><code style="font-family:var(--font-mono);color:var(--cyan);font-size:0.85em">glpi-backup.sh</code></li>
+                <li><code style="font-family:var(--font-mono);color:var(--cyan);font-size:0.85em">glpi-restorebackup.sh</code></li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h4>// Sécurité</h4>
+            <ul>
+                <li>Cookie httponly activé</li>
+                <li>MariaDB sécurisé</li>
+                <li>Permissions www-data</li>
+                <li>Purge auto backups 7j</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h4>// Accès service</h4>
+            <ul>
+                <li>IP : Server GLPI</li>
+                <li>Port : 80 (HTTP)</li>
+                <li>VirtualHost Apache configuré</li>
+            </ul>
+        </div>
+    </aside>
+
+</main>
+
+<div class="page-nav">
+    <a href="c14.html"><i class="fa-solid fa-arrow-left"></i> C14 — Planifier</a>
+    <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted);">5 / 5</span>
+    <a href="index.html">Retour au portfolio <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+
+<footer><p>&copy; 2025 Noah FINE — BTS SIO SISR</p></footer>
+
+<script src="script.js"></script>
+</body>
+</html>
